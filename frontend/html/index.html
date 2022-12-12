@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>comment_generate</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+  
+  <div class="container">
+    <div id="app">
+      
+      <div class="row">
+	<span class="error"> {{ result_message }} </span>
+	<input v-model="url_input" v-bind:disabled="is_input_disabled" autocomplete="off" placeholder="URLを入力">
+	<div class="sendURL">
+    <button v-on:click="sendURL" v-bind:disabled="is_button_disabled">
+         URLを送信
+	  </button>
+	</div>
+      </div>
+        <div class="row" v-for="item in datas">
+          <div class="content"> {{item.text}} </div>
+        </div>
+        <div class="row" v-show="is_comment_show">
+	        <div class="gen" v-on:click="generate"> 同じURLでコメントを再生成 </div>
+        </div>
+    </div><!-- id="app"-->
+  </div><!-- class="container"-->
+  <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>  
+  <script src="comment_gen.js"></script>
+</body>
+</html>
